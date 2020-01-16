@@ -29,17 +29,19 @@ public class Money implements Expression {
 
   @Override
   public String toString() {
-    return "Money{" +
-        "amount=" + amount +
-        ", currency='" + currency + '\'' +
-        '}';
+    return "Money{" + "amount=" + amount + ", currency='" + currency + '\'' + '}';
+  }
+
+  @Override
+  public Money reduce(String to) {
+    return this;
   }
 
   public Money times(int multiplier) {
     return new Money(multiplier * amount, currency);
   }
 
-  public Expression plus(Money money) {
-    return new Money(amount + money.amount, currency);
+  public Expression plus(Money addend) {
+    return new Sum(this, addend);
   }
 }
