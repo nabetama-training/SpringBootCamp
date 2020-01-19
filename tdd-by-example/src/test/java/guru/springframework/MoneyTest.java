@@ -3,6 +3,7 @@ package guru.springframework;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import jdk.jfr.Description;
 import org.junit.jupiter.api.Test;
 
 public class MoneyTest {
@@ -77,5 +78,16 @@ public class MoneyTest {
   void testIdentifyRate() {
     assertEquals(1, new Bank().rate("USD", "USD"));
     assertEquals(1, new Bank().rate("CHF", "CHF"));
+  }
+
+  @Test
+  @Description("異なる通貨同士の加算")
+  void testMixedAddition() {
+    Expression fiveBucks = Money.dollar(5);
+    Expression tenFrancs = Money.franc(10);
+    Bank bank = new Bank();
+    bank.addRate("CHF", "USD", 2);
+    Money result = bank.reduce(fiveBucks.plus(tenFrancs), "USD");
+    assertEquals(Money.dollar(10), result);
   }
 }
