@@ -44,11 +44,8 @@ public class Money implements Expression {
     return new Sum(this, addend);
   }
 
+  @Override
   public Expression times(int multiplier) {
     return new Money(multiplier * amount, currency);
-  }
-
-  public Expression plus(Money addend) {
-    return new Sum(this, addend);
   }
 }
