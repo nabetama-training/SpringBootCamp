@@ -48,7 +48,7 @@ public class MoneyTest {
     Expression result = five.plus(five);
     Sum sum = (Sum) result;
     assertEquals(five, sum.augmend);
-    assertEquals(five, sum.addment);
+    assertEquals(five, sum.addmend);
   }
 
   @Test
