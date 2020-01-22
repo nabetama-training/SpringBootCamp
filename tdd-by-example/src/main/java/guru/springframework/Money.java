@@ -3,8 +3,8 @@ package guru.springframework;
 import java.awt.event.MouseEvent;
 
 public class Money implements Expression {
-  protected int amount;
-  protected String currency;
+  final int amount;
+  private final String currency;
 
   public Money(int amount, String currency) {
     this.amount = amount;
@@ -15,11 +15,11 @@ public class Money implements Expression {
     return currency;
   }
 
-  public static Money dollar(int amount) {
+  static Money dollar(int amount) {
     return new Money(amount, "USD");
   }
 
-  public static Money franc(int amount) {
+  static Money franc(int amount) {
     return new Money(amount, "CHF");
   }
 
@@ -36,7 +36,7 @@ public class Money implements Expression {
 
   @Override
   public Money reduce(Bank bank, String to) {
-    return  new Money(amount/bank.rate(this.currency, to), to);
+    return new Money(amount / bank.rate(this.currency, to), to);
   }
 
   @Override
