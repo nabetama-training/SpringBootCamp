@@ -1,8 +1,6 @@
 package guru.springframework;
 
-import java.awt.event.MouseEvent;
-
-public class Money implements Expression {
+class Money implements Expression {
   final int amount;
   private final String currency;
 
@@ -26,7 +24,10 @@ public class Money implements Expression {
   @Override
   public boolean equals(Object obj) {
     Money money = (Money) obj;
-    return amount == money.amount && currency == money.currency;
+    if (money == null) {
+      return false;
+    }
+    return amount == money.amount && currency.equals(money.currency);
   }
 
   @Override
