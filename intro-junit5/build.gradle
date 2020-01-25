@@ -15,6 +15,9 @@ dependencies {
 
     compile "io.projectreactor:reactor-core:3.3.2.RELEASE"
     testCompile("io.projectreactor:reactor-test:3.3.2.RELEASE")
+    // https://mvnrepository.com/artifact/io.projectreactor/reactor-core
+    compile group: 'io.projectreactor', name: 'reactor-core', version: '3.3.2.RELEASE'
+
 }
 
 test {
