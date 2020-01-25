@@ -11,4 +11,10 @@ public class Part01Flux {
   Flux<String> fooBarFluxFromValues() {
     return Flux.just("foo", "bar");
   }
+
+  public Flux<String> fooBarFluxFromList() {
+    return Flux.fromArray(new String[]{"foo", "bar"});
+  }
+
+
 }
