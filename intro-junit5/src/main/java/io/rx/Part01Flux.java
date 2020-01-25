@@ -1,5 +1,6 @@
 package io.rx;
 
+import java.time.Duration;
 import reactor.core.publisher.Flux;
 
 public class Part01Flux {
@@ -19,5 +20,10 @@ public class Part01Flux {
 
   public Flux<String> errorFlux() {
     return Flux.error(new IllegalStateException());
+  }
+
+  public Flux<Long> counter() {
+    return Flux.interval(Duration.ofMillis(100))
+        .take(10);
   }
 }
