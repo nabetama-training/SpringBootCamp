@@ -34,4 +34,11 @@ public class Part01FluxTest {
         .expectNext("foo", "bar")
         .verifyComplete();
   }
+
+  @Test
+  void error() {
+    Flux<String> flux = workshop.errorFlux();
+    StepVerifier.create(flux)
+        .verifyError(IllegalStateException.class);
+  }
 }

@@ -17,4 +17,7 @@ public class Part01Flux {
   }
 
 
+  public Flux<String> errorFlux() {
+    return Flux.error(new IllegalStateException());
+  }
 }
