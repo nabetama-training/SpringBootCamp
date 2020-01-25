@@ -19,5 +19,11 @@ public class Part01FluxTest {
         .verifyComplete();
   }
 
-  
+  @Test
+  void fromValues() {
+    Flux<String> flux = workshop.fooBarFluxFromValues();
+    StepVerifier.create(flux)
+        .expectNext("foo", "bar")
+        .verifyComplete();
+  }
 }

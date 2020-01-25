@@ -7,4 +7,8 @@ public class Part01Flux {
   Flux<String> emptyFlux() {
     return Flux.empty();
   }
+
+  Flux<String> fooBarFluxFromValues() {
+    return Flux.just("foo", "bar");
+  }
 }
