@@ -14,7 +14,7 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.0")
 
     compile "io.projectreactor:reactor-core:3.3.2.RELEASE"
-    testCompile("io.projectreactor:reactor-test:3.3.2.RELEASE")
+    compile "io.projectreactor:reactor-test:3.3.2.RELEASE"
     // https://mvnrepository.com/artifact/io.projectreactor/reactor-core
     compile group: 'io.projectreactor', name: 'reactor-core', version: '3.3.2.RELEASE'
 
