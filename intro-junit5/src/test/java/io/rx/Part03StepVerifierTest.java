@@ -33,7 +33,7 @@ public class Part03StepVerifierTest {
   @Test
   void expectElementsWithThenComplete() {
     workshop.expectSkylerJesseComplete(
-        Flux.just(new User("swhite"), new User("jpinkman"))
+        Flux.just(new User("swhite", null, null), new User("jpinkman", null, null))
     );
   }
 
