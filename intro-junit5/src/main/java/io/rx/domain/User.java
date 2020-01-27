@@ -1,9 +1,12 @@
 package io.rx.domain;
 
 import java.util.Objects;
-import lombok.Data;
 
-@Data
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class User {
 
   public static final User SKYLER = new User("swhite", "Skyler", "White");
