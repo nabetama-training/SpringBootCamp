@@ -26,10 +26,6 @@ public class User {
     this.lastname = lastname;
   }
 
-  public String getName() {
-    return name;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {

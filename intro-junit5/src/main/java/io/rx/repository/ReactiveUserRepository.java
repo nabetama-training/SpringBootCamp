@@ -38,12 +38,15 @@ public class ReactiveUserRepository implements ReactiveRepository<User> {
 
   @Override
   public Flux<User> findAll() {
-    return null;
+    return withDelay(Flux.fromIterable(users));
   }
 
   @Override
-  public Mono<User> findById(String id) {
-    return null;
+  public Mono<User> findById(String name) {
+    User user = users.stream().filter((u) -> u.getName().equals(name))
+        .findFirst()
+        .orElseThrow(() -> new IllegalArgumentException(name + " is not available"));
+    return withDelay(Mono.just(user));
   }
 
   private Mono<User> withDelay(Mono<User> userMono) {
@@ -53,5 +56,13 @@ public class ReactiveUserRepository implements ReactiveRepository<User> {
         // 単に遅延させたいだけなので, delay()のreturn valueは使わずに読み捨てる。
         // 引数で受け取ったuserMonoをそのままreturnする
         .flatMap(c -> userMono);
+  }
+
+  private Flux<User> withDelay(Flux<User> userFlux) {
+    return Flux
+//        delayInMsのインターバルで
+        .interval(Duration.ofMillis(delayInMs))
+//        userFluxを順に返す。インデックスは読み捨て
+        .zipWith(userFlux, (i, user) -> user);
   }
 }
