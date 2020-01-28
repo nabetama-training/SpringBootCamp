@@ -34,6 +34,5 @@ public class Part04TransformTest {
             new User("WWHITE", "WALTER", "WHITE"),
             new User("SGOODMAN", "SAUL", "GOODMAN"))
         .verifyComplete();
-
   }
 }
