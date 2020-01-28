@@ -12,11 +12,21 @@ public class Part04Transform {
             user.getLastname().toUpperCase()));
   }
 
-  public Flux<User> capitalizeMany(Flux<User> flux) {
-    return flux.flatMap(user -> asyncCapitalizeUser(user));
+  Flux<User> capitalizeMany(Flux<User> flux) {
+    return flux.map(u -> new User(
+        u.getName().toUpperCase(),
+        u.getFirstname().toUpperCase(),
+        u.getLastname().toUpperCase()
+        )
+    );
+  }
+
+  public Flux<User> asyncCapitalizeMany(Flux<User> flux) {
+    return flux.flatMap(this::asyncCapitalizeUser);
   }
 
   Mono<User> asyncCapitalizeUser(User u) {
-    return Mono.just(new User(u.getName().toUpperCase(), u.getFirstname().toUpperCase(), u.getLastname().toUpperCase()));
+    return Mono.just(new User(u.getName().toUpperCase(), u.getFirstname().toUpperCase(),
+        u.getLastname().toUpperCase()));
   }
 }
