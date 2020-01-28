@@ -1,14 +1,19 @@
 package io.rx;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import io.rx.domain.User;
 import io.rx.repository.ReactiveRepository;
 import io.rx.repository.ReactiveUserRepository;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
+import reactor.test.StepVerifier.Assertions;
 
 @TestInstance(Lifecycle.PER_CLASS)
 public class Part04TransformTest {
@@ -48,5 +53,11 @@ public class Part04TransformTest {
             new User("WWHITE", "WALTER", "WHITE"),
             new User("SGOODMAN", "SAUL", "GOODMAN"))
         .verifyComplete();
+  }
+
+  @Test
+  void streamTest() {
+    List<Integer> nums = workshop.getNumsOverMinus5();
+    assertThat(nums).containsExactly(3, 1, -4, 1, 9, -2, 6, 5, 3, 5);
   }
 }
