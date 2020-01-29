@@ -1,7 +1,6 @@
 package io.rx;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import io.rx.domain.User;
 import io.rx.repository.ReactiveRepository;

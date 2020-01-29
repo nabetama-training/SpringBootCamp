@@ -21,6 +21,15 @@ public class ReactiveUserRepository implements ReactiveRepository<User> {
     this(DEFAULT_DELAY_IN_MS);
   }
 
+  public ReactiveUserRepository(User... users) {
+    this(DEFAULT_DELAY_IN_MS, users);
+  }
+
+  public ReactiveUserRepository(long delayInMs, User... users) {
+    this.delayInMs = delayInMs;
+    this.users = new ArrayList<>(Arrays.asList(users));
+  }
+
   public ReactiveUserRepository(long delayInMs) {
     this.delayInMs = delayInMs;
     this.users = new ArrayList<>(Arrays.asList(User.SKYLER, User.JESSE, User.WALTER, User.SAUL));
