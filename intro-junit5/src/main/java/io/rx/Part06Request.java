@@ -31,4 +31,12 @@ public class Part06Request {
         .findAll()
         .log();
   }
+
+  public Flux<User> fluxWithDoOnPrintln() {
+    return repository
+        .findAll()
+        .doOnSubscribe(s -> System.out.println("Starring:"))
+        .doOnNext(p -> System.out.println(p.getFirstname() + " " + p.getLastname()))
+        .doOnComplete(() -> System.out.println("The end!")); // TO BE REMOVED
+  }
 }

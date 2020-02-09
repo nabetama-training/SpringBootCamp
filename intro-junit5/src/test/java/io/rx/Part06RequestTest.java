@@ -42,4 +42,12 @@ public class Part06RequestTest {
         .expectNextMatches(u -> true)
         .verifyComplete();
   }
+
+  @Test
+  void experimentWithDoOn() {
+    Flux<User> flux = workshop.fluxWithDoOnPrintln();
+    StepVerifier.create(flux)
+        .expectNextCount(4)
+        .verifyComplete();
+  }
 }
