@@ -54,4 +54,9 @@ public class Part09AdaptTest {
         .expectNext(User.SKYLER)
         .verifyComplete();
   }
+
+  @Test
+  void flatMapTrainingTest() {
+    StepVerifier.create(workshop.flatMapTraining()).expectNext(2, 3, 5).verifyComplete();
+  }
 }

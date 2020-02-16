@@ -6,6 +6,7 @@ import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.rx.domain.User;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -34,12 +35,22 @@ public class Part09Adapt {
     return Mono.from(single.toFlowable());
   }
 
-
   public CompletableFuture<User> fromMonoToCompletableFuture(Mono<User> mono) {
     return mono.toFuture();
   }
 
   public Mono<User> fromCompletableFutureToMono(CompletableFuture<User> future) {
     return Mono.fromFuture(future);
+  }
+
+  private Integer plus1(int i) {
+    return i + 1;
+  }
+
+  
+
+  public Flux<Integer> flatMapTraining() {
+    return Flux.fromStream(Stream.of(1, 2, 4)
+        .map(this::plus1));
   }
 }
