@@ -57,6 +57,6 @@ public class Part09AdaptTest {
 
   @Test
   void flatMapTrainingTest() {
-    StepVerifier.create(workshop.flatMapTraining()).expectNext(2, 3, 5).verifyComplete();
+    StepVerifier.create(workshop.flatMapTraining()).expectNext(8, 10, 14).verifyComplete();
   }
 }

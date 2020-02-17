@@ -47,10 +47,18 @@ public class Part09Adapt {
     return i + 1;
   }
 
-  
+  private Mono<Integer> plus2(int i) {
+    return Mono.just(i + 2);
+  }
 
   public Flux<Integer> flatMapTraining() {
     return Flux.fromStream(Stream.of(1, 2, 4)
-        .map(this::plus1));
+        .map(this::plus1)) // mapにはMonoを喰わせることができない
+        .flatMap(this::plus2) // flatMapにはMonoを食わせることしかできない
+        .map(this::time2);
+  }
+
+  private Integer time2(Integer integer) {
+    return integer * 2;
   }
 }
