@@ -59,4 +59,9 @@ public class Part09AdaptTest {
   void flatMapTrainingTest() {
     StepVerifier.create(workshop.flatMapTraining()).expectNext(8, 10, 14).verifyComplete();
   }
+
+  @Test
+  void fluxFilterTest() {
+    StepVerifier.create(workshop.fluxFilter()).expectNext(2, 4).verifyComplete();
+  }
 }

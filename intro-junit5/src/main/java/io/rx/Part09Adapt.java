@@ -5,6 +5,9 @@ import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.rx.domain.User;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 import reactor.core.publisher.Flux;
@@ -60,5 +63,9 @@ public class Part09Adapt {
 
   private Integer time2(Integer integer) {
     return integer * 2;
+  }
+
+  public Flux<Integer> fluxFilter() {
+    return Flux.fromIterable(Arrays.asList(1, 2, 3, 4)).filter(n -> n % 2 == 0);
   }
 }
