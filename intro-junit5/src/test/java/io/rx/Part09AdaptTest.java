@@ -7,6 +7,9 @@ import io.reactivex.Single;
 import io.rx.domain.User;
 import io.rx.repository.ReactiveRepository;
 import io.rx.repository.ReactiveUserRepository;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -73,5 +76,13 @@ public class Part09AdaptTest {
   @Test
   void fluxMap() {
     StepVerifier.create(workshop.fluxMap()).expectNext("- hoge -", "- fuga -").verifyComplete();
+  }
+
+  @Test
+  void fluxBuffer() {
+    List<Integer> first = Arrays.asList(1, 2);
+    List<Integer> second = Arrays.asList(3, 4);
+    List<Integer> third = Arrays.asList(5, 6);
+    StepVerifier.create(workshop.fluxBuffer()).expectNext(first, second, third).verifyComplete();
   }
 }

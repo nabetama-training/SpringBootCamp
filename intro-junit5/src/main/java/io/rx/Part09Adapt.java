@@ -80,4 +80,8 @@ public class Part09Adapt {
   public Flux<Object> fluxMap() {
     return Flux.just("hoge", "fuga").map(s -> "- " + s + " -");
   }
+
+  public Flux<List<Integer>> fluxBuffer() {
+    return Flux.fromIterable(Arrays.asList(1, 2, 3, 4, 5, 6)).buffer(2);
+  }
 }
