@@ -10,10 +10,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
+import org.reactivestreams.Publisher;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public class Part09Adapt {
+
   Flowable<User> fromFluxToFlowable(Flux<User> flux) {
     return Flowable.fromPublisher(flux);
   }
@@ -70,6 +72,12 @@ public class Part09Adapt {
 
   public Flux<Integer> fluxTake() {
     List<Integer> nums = new ArrayList<>();
-    return Flux.fromIterable(Arrays.asList(0, 1, 2, 3, 4, 5, 6)).mergeWith(Flux.fromIterable(nums)).take((2));
+    return Flux.fromIterable(Arrays.asList(0, 1, 2, 3, 4, 5, 6))
+        .mergeWith(Flux.fromIterable(nums))
+        .take((2));
+  }
+
+  public Flux<Object> fluxMap() {
+    return Flux.just("hoge", "fuga").map(s -> "- " + s + " -");
   }
 }

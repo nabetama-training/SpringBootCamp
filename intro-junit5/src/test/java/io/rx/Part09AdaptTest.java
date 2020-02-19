@@ -69,4 +69,9 @@ public class Part09AdaptTest {
   void fluxTakeTest() {
     StepVerifier.create(workshop.fluxTake()).expectNext(0, 1).verifyComplete();
   }
+
+  @Test
+  void fluxMap() {
+    StepVerifier.create(workshop.fluxMap()).expectNext("- hoge -", "- fuga -").verifyComplete();
+  }
 }
