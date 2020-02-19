@@ -55,8 +55,7 @@ public class Part09Adapt {
   }
 
   public Flux<Integer> flatMapTraining() {
-    return Flux.fromStream(Stream.of(1, 2, 4)
-        .map(this::plus1)) // mapにはMonoを喰わせることができない
+    return Flux.fromStream(Stream.of(1, 2, 4).map(this::plus1)) // mapにはMonoを喰わせることができない
         .flatMap(this::plus2) // flatMapにはMonoを食わせることしかできない
         .map(this::time2);
   }
@@ -67,5 +66,10 @@ public class Part09Adapt {
 
   public Flux<Integer> fluxFilter() {
     return Flux.fromIterable(Arrays.asList(1, 2, 3, 4)).filter(n -> n % 2 == 0);
+  }
+
+  public Flux<Integer> fluxTake() {
+    List<Integer> nums = new ArrayList<>();
+    return Flux.fromIterable(Arrays.asList(0, 1, 2, 3, 4, 5, 6)).mergeWith(Flux.fromIterable(nums)).take((2));
   }
 }

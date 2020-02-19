@@ -64,4 +64,9 @@ public class Part09AdaptTest {
   void fluxFilterTest() {
     StepVerifier.create(workshop.fluxFilter()).expectNext(2, 4).verifyComplete();
   }
+
+  @Test
+  void fluxTakeTest() {
+    StepVerifier.create(workshop.fluxTake()).expectNext(0, 1).verifyComplete();
+  }
 }
