@@ -75,12 +75,12 @@ public class Part09AdaptTest {
   }
 
   @Test
-  void fluxMap() {
+  void fluxMapTest() {
     StepVerifier.create(workshop.fluxMap()).expectNext("- hoge -", "- fuga -").verifyComplete();
   }
 
   @Test
-  void fluxBuffer() {
+  void fluxBufferTest() {
     List<Integer> first = Arrays.asList(1, 2);
     List<Integer> second = Arrays.asList(3, 4);
     List<Integer> third = Arrays.asList(5, 6);
@@ -88,9 +88,14 @@ public class Part09AdaptTest {
   }
 
   @Test
-  void fluxMerge() {
+  void fluxMergeTest() {
     Flux<Integer> nums1 = Flux.just(1, 2, 3);
     Flux<Integer> nums2 = Flux.just(4, 5, 6);
     StepVerifier.create(Flux.merge(nums1, nums2)).expectNext(1, 2, 3, 4, 5, 6).verifyComplete();
+  }
+
+  @Test
+  void fluxZipTest() {
+    
   }
 }
