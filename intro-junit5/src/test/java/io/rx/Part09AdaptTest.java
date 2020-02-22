@@ -17,6 +17,7 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
+import reactor.test.StepVerifier.Step;
 
 @TestInstance(Lifecycle.PER_CLASS)
 public class Part09AdaptTest {
@@ -84,5 +85,12 @@ public class Part09AdaptTest {
     List<Integer> second = Arrays.asList(3, 4);
     List<Integer> third = Arrays.asList(5, 6);
     StepVerifier.create(workshop.fluxBuffer()).expectNext(first, second, third).verifyComplete();
+  }
+
+  @Test
+  void fluxMerge() {
+    Flux<Integer> nums1 = Flux.just(1, 2, 3);
+    Flux<Integer> nums2 = Flux.just(4, 5, 6);
+    StepVerifier.create(Flux.merge(nums1, nums2)).expectNext(1, 2, 3, 4, 5, 6).verifyComplete();
   }
 }
