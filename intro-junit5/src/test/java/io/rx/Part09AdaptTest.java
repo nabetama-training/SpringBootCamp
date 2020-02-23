@@ -93,9 +93,4 @@ public class Part09AdaptTest {
     Flux<Integer> nums2 = Flux.just(4, 5, 6);
     StepVerifier.create(Flux.merge(nums1, nums2)).expectNext(1, 2, 3, 4, 5, 6).verifyComplete();
   }
-
-  @Test
-  void fluxZipTest() {
-    
-  }
 }
