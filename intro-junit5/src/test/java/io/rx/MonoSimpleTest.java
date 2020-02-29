@@ -25,6 +25,4 @@ public class MonoSimpleTest {
   void test__MonoMap() {
     StepVerifier.create(workshop.MonoMap("nabetama")).expectNext("Hello, nabetama").verifyComplete();
   }
-
-
 }
